@@ -1,0 +1,103 @@
+#body {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#header {
+    height: 175px;
+}
+
+#workspace {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+#field {
+    height: 400px;
+    width: 800px;
+    border: solid 8px;
+    border-radius: 5px;
+}
+
+#calculator {
+    height: 500px;
+    width: 500px;
+    border: solid 8px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#calc-display {
+    width: 450px;
+    height: 70px;
+    margin-left: 25px;
+    margin-top: 15px;
+    border: solid 2px
+}
+
+#inputbox {
+    text-align: end;
+}
+
+#control {
+    display: flex;
+    flex-direction: row;
+    border: dashed 2px;
+    margin: 10px;
+    height: 400px;
+}
+
+/* Button flex */
+#buttons1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    height: 215px;
+    width: 165px;
+    border: solid 2px;
+    vertical-align: top;
+}
+
+.digit {
+    height: 50px;
+    width: 50px;
+    margin: 2px;
+}
+
+.operator {
+    height: 50px;
+    width: 50px;
+    margin: 2px;
+}
+
+#buttons2 {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    height: 365px;
+    width: 75px;
+    border: solid 2px;
+    justify-content: baseline;
+    align-items: center;
+}
+
+#buttons3 {
+    margin: 10px;
+    height: 365px;
+    width: 150px;
+    border: solid 2px;
+}
+
+#equals {
+    height: 50px;
+    width: 110px;
+}
+
+#footer {
+    height: 100px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+<div id="header"></div>
+
+<div id="workspace">
+
+        <div id="calculator">
+        <div id="calc-display"><p id="inputbox"></p></div> <!-- inputbox is where numbers are displayed. -->
+
+                <div id="control">
+                    <div id="buttons1">     <!-- This div contains the buttons. -->
+                        <button value="7" class="digit">7</button>
+                        <button value="8" class="digit">8</button>
+                        <button value="9" class="digit">9</button>
+                        <button value="4" class="digit">4</button>
+                        <button value="5" class="digit">5</button>
+                        <button value="6" class="digit">6</button>
+                        <button value="1" class="digit">1</button>
+                        <button value="2" class="digit">2</button>
+                        <button value="3" class="digit">3</button>
+                        <button value="0" class="digit">0</button>
+                        <button class="digit"></button>
+                        <button class="digit">←</button>
+                    </div>
+                    <div id="buttons2">
+                        <button class="operator">+</button>
+                        <button class="operator">-</button>
+                        <button class="operator">*</button>
+                        <button class="operator">/</button>
+                    </div>
+                    <div id="buttons3">
+                        <button id="equals">=</button>
+                        <button id="equals">C L E A R</button>
+                    </div>
+                </div>
+                
+        </div>
+        <div id="field"></div>
+</div>
+
+        
+
+        
+
+ <div id="footer"></div>
+ 
+ <script>
+
+
+const add = function(a, b) {return (a+b)}
+
+const subtract = function(a, b) {return (a-b)}
+
+const multiply = function(a, b) {return (a*b)}
+
+const divide = function(a, b) {return (a/b)}
+
+const operate = function(a, b, c) {
+    console.log(c)
+    if(c == '+') {
+        return add(a, b)
+    }
+    else if(c == '-') {
+        return subtract(a, b)
+    }
+    else if(c == '*') {
+        return multiply(a, b)
+    }
+    else if(c == '/') {
+        return divide(a, b)
+    }
+}
+
+
+const digits = Object.values(document.getElementsByClassName("digit"))
+
+digits.forEach(button => button.addEventListener('click', function (e) {
+    console.log(e.target.value)
+}))
+
+//console.log(digits)
+
+   </script>
+    
+</body>
+</html>
