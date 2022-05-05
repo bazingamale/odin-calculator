@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+<div id="header"></div>
+
+<div id="workspace">
+
+        <div id="calculator">
+        <div id="calc-display"><p id="inputbox"></p></div> <!-- inputbox is where numbers are displayed. -->
+
+                <div id="control">
+                    <div id="buttons1">     <!-- This div contains the buttons. -->
+                        <button value="7" class="digit">7</button>
+                        <button value="8" class="digit">8</button>
+                        <button value="9" class="digit">9</button>
+                        <button value="4" class="digit">4</button>
+                        <button value="5" class="digit">5</button>
+                        <button value="6" class="digit">6</button>
+                        <button value="1" class="digit">1</button>
+                        <button value="2" class="digit">2</button>
+                        <button value="3" class="digit">3</button>
+                        <button value="0" class="digit">0</button>
+                        <button class="digit" id="decimal">.</button>
+                        <button class="digit">←</button>
+                    </div>
+                    <div id="buttons2">
+                        <button class="operator" id="add">+</button>
+                        <button class="operator" id="subtract">-</button>
+                        <button class="operator" id="multiply">*</button>
+                        <button class="operator" id="divide">/</button>
+                    </div>
+                    <div id="buttons3">
+                        <button class="equals" id="operate">=</button>
+                        <button class="equals" id="clear">C L E A R</button>
+                    </div>
+                </div>
+                
+        </div>
+        <div id="field"></div>
+</div>
+
+        
+
+        
+
+ <div id="footer"></div>
+ 
+ <script>
+
+
+const add = function(a, b) {return (a+b)}
+
+const subtract = function(a, b) {return (a-b)}
+
+const multiply = function(a, b) {return (a*b)}
+
+const divide = function(a, b) {return (a/b)}
+
+
+
+var currentInput = [];
+var storedInput = [];
+var currentOp
+
+const digits = Object.values(document.getElementsByClassName("digit"))
+const inputbox = document.getElementById("inputbox")
+
+digits.forEach(button => button.addEventListener('click', function (e) {
+    currentInput = currentInput + e.target.value
+    console.log(currentInput + ' (currentInput)')
+    inputbox.innerHTML = currentInput
+}))
+
+const addButton = document.getElementById("add")
+const subtractButton = document.getElementById("subtract")
+const multiplyButton = document.getElementById("multiply")
+const divideButton = document.getElementById("divide")
+
+const clearButton = document.getElementById("clear")
+const decimalButton = document.getElementById("decimal")
+
+inputbox.innerHTML = 0
+
+clearButton.addEventListener('click', function (e) {
+    storedInput = [];
+    currentInput = [];
+    inputbox.innerHTML = 0
+})
+
+decimalButton.addEventListener('click', function (e) {
+    if(currentInput.indexOf(".") == -1) {
+        console.log("no decimal found")
+        currentInput = currentInput + "."
+        inputbox.innerHTML = currentInput
+    }
+    else {
+        console.log("Decimal found!")
+        return
+    }
+    
+})
+
+addButton.addEventListener('click', function (e) {
+    if(storedInput.length==0) {
+    storedInput = currentInput
+    currentInput = [];
+    currentOp = 'add'
+        report = () => {
+            console.log(storedInput + ' (stored value)')
+            console.log(currentInput)
+            console.log(currentOp)
+        }
+        report()
+    }
+    else {
+        calculate()
+        currentInput = storedInput;
+        currentInput = [];
+        currentOp = 'add'
+    }
+})
+
+
+subtractButton.addEventListener('click', function (e) {
+    if(storedInput.length==0) {
+    storedInput = currentInput
+    currentInput = [];
+    currentOp = 'sub'
+        report = () => {
+            console.log(storedInput + ' (stored value)')
+            console.log(currentInput)
+            console.log(currentOp)
+        }
+        report()
+    }
+    else {
+        calculate()
+        currentInput = storedInput;
+        currentInput = [];
+        currentOp = 'sub'
+    }
+})
+
+
+multiplyButton.addEventListener('click', function (e) {
+    if(storedInput.length==0) {
+    storedInput = currentInput
+    currentInput = [];
+    currentOp = 'mult'
+        report = () => {
+            console.log(storedInput + ' (stored value)')
+            console.log(currentInput)
+            console.log(currentOp)
+        }
+        report()
+    }
+    else {
+        calculate()
+        currentInput = storedInput;
+        currentInput = [];
+        currentOp = 'mult'
+    }
+})
+
+divideButton.addEventListener('click', function (e) {
+    if(storedInput.length==0) {
+    storedInput = currentInput
+    currentInput = [];
+    currentOp = 'div'
+        report = () => {
+            console.log(storedInput + ' (stored value)')
+            console.log(currentInput)
+            console.log(currentOp)
+        }
+        report()
+    }
+    else {
+        calculate()
+        currentInput = storedInput;
+        currentInput = [];
+        currentOp = 'div'
+    }
+})
+
+
+
+    
+const operate =  document.getElementById('operate')
+
+var first
+var second
+
+operate.addEventListener('click', function (e) {
+    console.log('Operating...')
+    calculate()
+})
+
+function calculate() {
+    first = parseFloat(storedInput)
+    second = parseFloat(currentInput)
+    if(currentOp == 'add') {
+        console.log(add(first, second))
+        storedInput = add(first, second)
+    }
+    else if(currentOp == 'sub') {
+        console.log(subtract(first, second))
+        storedInput = subtract(first, second)
+    }
+    else if(currentOp == 'mult') {
+        console.log(multiply(first, second))
+        storedInput = multiply(first, second)
+    }
+    else if(currentOp == 'div') {
+        console.log(divide(first, second))
+        storedInput = divide(first, second)
+    }
+    currentOp = null
+    inputbox.innerHTML = storedInput
+}
+
+
+//console.log(digits)
+
+   </script>
+    
+</body>
+
+<braincode>
+
+    
+    const add
+        Take inputs (a, b). Add them and return the result.
+    const subtract
+        Take inputs (a, b). Subtract them and return the result.
+    const multiply
+        Take inputs (a, b). Multiply them and return the result.
+    const divide 
+        Take inputs (a, b). Divide them and return the result.
+
+    const digits = Object.values(document.getElementsByClassName("digit"))
+        Create an array digits[] whose elements are each of the Values of the selected HTML elements in the "digit" class.
+
+    digits.forEach(button => button.addEventListener('click', function (e) ...
+        For each element in the array digits[],
+        add an EventListener which adds the Value of that element to the end of array currentInput[].
+
+    clearButton.addEventListener('click', function (e) 
+        Add an EventListener to the clear Button
+        currentInput[] is redefined as empty.
+        storedInput[] is redefined as empty.
+
+    addButton.addEventListener('click', function (e) {
+        currentInput[] is stored in the array storedInput[].
+        storedInput.operator is defined by the string '+'.      
+        currentInput[] is redefined as empty.       
+
+        Storing '+' as storedInput.operator does not work.
+
+        When you click on an operator button,
+        The current input is stored in another variable and then emptied to make room for the next input.
+        
+
+        When you click on the Operate button,
+        it should call the storedInput and the currentInput as arguments (a) and (b).
+        Then, it should recall which operator was pressed,
+        and call the appropriate function.
+
+    var currentInput
+    var storedInput
+
+</braincode>
+
+</html>
