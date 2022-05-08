@@ -34,9 +34,11 @@
 #calc-display {
     width: 450px;
     height: 70px;
-    margin-left: 25px;
+    margin-left: 15px;
     margin-top: 15px;
-    border: solid 2px
+    border: solid 2px;
+    border-radius: 5px;
+    padding-right: 15px;
 }
 
 #inputbox {
@@ -46,7 +48,6 @@
 #control {
     display: flex;
     flex-direction: row;
-    border: dashed 2px;
     margin: 10px;
     height: 400px;
 }
@@ -59,7 +60,6 @@
     margin: 10px;
     height: 215px;
     width: 165px;
-    border: solid 2px;
     vertical-align: top;
 }
 
@@ -81,7 +81,6 @@
     margin: 10px;
     height: 365px;
     width: 75px;
-    border: solid 2px;
     justify-content: baseline;
     align-items: center;
 }
@@ -90,7 +89,6 @@
     margin: 10px;
     height: 365px;
     width: 150px;
-    border: solid 2px;
 }
 
 .equals {
